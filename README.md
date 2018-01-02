@@ -1,27 +1,72 @@
-# NgxInputFileUpload
+# Ngx-Input-File-Upload
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
+This project was generated in Angular 5.1.1
 
-## Development server
+## Implementation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+####1) Install: 
+npm install ngx-input-file-upload
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+####2) Import: in app module include:
 
-## Build
+import { NgxInputFileUploadModule } from 'ngx-input-file-upload'
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+imports: [
+    ...,
+    NgxInputFileUploadModule
+  ],
 
-## Running unit tests
+![Alt text](https://raw.githubusercontent.com/danielmoreno510/ngx-input-file-upload/master/path/to/import.png)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+####3) Add labels Html
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+`<ngx-input-file-upload></ngx-input-file-upload>`
 
-## Further help
+NOTA:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+You can add the verification of extensions with:
+`[acceptHtml]="'image/*'" [acceptTs]="'/image-*/'"`
+
+
+You can change the color of the effect with:
+`[activeColor]="red"`
+
+
+Import Icons:
+`<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+
+
+####4) Get data from the files:
+
+1) In your component:
+`import { NgxInputFileUploadComponent } from 'ngx-input-file-upload'`
+
+`export class AppComponent {
+  @ViewChild(NgxInputFileUploadComponent) private NgxInputFileUploadComponent: NgxInputFileUploadComponent;
+  acceptHtml="image/*"
+  acceptTs=/image-*/
+  activeColor: string = '#3366CC';`
+
+ `change(){
+    console.log(this.NgxInputFileUploadComponent.imageData);
+    console.log(this.NgxInputFileUploadComponent.imageSrc);
+    console.log(this.NgxInputFileUploadComponent.imageLoaded);
+  }
+}`
+
+2) In your html:
+`<ngx-input-file-upload [acceptHtml]="acceptHtml" [acceptTs]="acceptTs" [activeColor]="activeColor"></ngx-input-file-upload>
+<br>
+<button (click)="change()">get data - console</button>`
+
+## Functioning
+
+![Alt text](https://raw.githubusercontent.com/danielmoreno510/ngx-input-file-upload/master/path/to/functioning1.png)
+![Alt text](https://raw.githubusercontent.com/danielmoreno510/ngx-input-file-upload/master/path/to/functioning2.png)
+![Alt text](https://raw.githubusercontent.com/danielmoreno510/ngx-input-file-upload/master/path/to/functioning3.png)
+
+## NPM
+
+`https://www.npmjs.com/package/ngx-input-file-upload`
